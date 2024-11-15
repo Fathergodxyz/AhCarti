@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Header = () => {
   const wrapper = useRef();
+
+  const navigate = useNavigate();
+
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -46,7 +49,7 @@ const Header = () => {
         ${isScrolled ? "py-2 md:py-0" : "py-8 md:py-6 lg:py-8"}
       `}
       >
-        <a href="#" className="block">
+        <a onClick={() => navigate("/")} className="block">
           <div
             className={`
             ${
