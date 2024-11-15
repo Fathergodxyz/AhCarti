@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef } from "react";
+import { useRef } from "react";
+import PropTypes from "prop-types";
 
 const Slide = ({ children }) => {
   const item = useRef();
@@ -25,6 +26,10 @@ const Slide = ({ children }) => {
   }, []);
 
   return <div ref={item}>{children}</div>;
+};
+
+Slide.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Slide;

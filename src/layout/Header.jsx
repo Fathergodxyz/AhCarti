@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 const Header = () => {
   const wrapper = useRef();
@@ -7,10 +7,10 @@ const Header = () => {
   useEffect(() => {
     // Initial animation
     wrapper.current.style.transform = `translateY(-100%)`;
-    wrapper.current.style.transition = 'transform 1s ease';
-    
+    wrapper.current.style.transition = "transform 1s ease";
+
     setTimeout(() => {
-      wrapper.current.style.transform = 'translateY(0)';
+      wrapper.current.style.transform = "translateY(0)";
     }, 1650);
 
     const handleScroll = () => {
@@ -22,8 +22,8 @@ const Header = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -32,23 +32,32 @@ const Header = () => {
       className={`
         fixed top-0 left-0 w-full z-50
         transition-all duration-300 ease-in-out
-        ${isScrolled ? 'bg-[#e8d2a0]/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}
+        ${
+          isScrolled
+            ? "bg-[#e8d2a0]/80 backdrop-blur-sm shadow-lg"
+            : "bg-transparent"
+        }
       `}
     >
-      <div className={`
+      <div
+        className={`
         flex justify-between items-center w-full px-4 md:px-3
         transition-all duration-300
-        ${isScrolled ? 'py-2 md:py-0' : 'py-8 md:py-6 lg:py-8'}
-      `}>
-        <a 
-          href="#"
-          className="block"
-        >
-          <div className={`
-            ${isScrolled ? '-my-2 md:-my-3 lg:-my-4 ml-0 md:ml-2' : 'my-0 ml-2 md:ml-4'}
+        ${isScrolled ? "py-2 md:py-0" : "py-8 md:py-6 lg:py-8"}
+      `}
+      >
+        <a href="#" className="block">
+          <div
+            className={`
+            ${
+              isScrolled
+                ? "-my-2 md:-my-3 lg:-my-4 ml-0 md:ml-2"
+                : "my-0 ml-2 md:ml-4"
+            }
             transition-all duration-300 transform
-            ${isScrolled ? 'scale-[0.7] md:scale-[0.6]' : 'scale-100'}
-          `}>
+            ${isScrolled ? "scale-[0.7] md:scale-[0.6]" : "scale-100"}
+          `}
+          >
             <img
               src="/logo.png"
               alt="$father"
@@ -60,11 +69,17 @@ const Header = () => {
           </div>
         </a>
 
-        <div className={`
-          ${isScrolled ? '-my-2 md:-my-3 lg:-my-4 -mr-2 md:-mr-6' : 'my-0 mr-2 md:mr-4'}
+        <div
+          className={`
+          ${
+            isScrolled
+              ? "-my-2 md:-my-3 lg:-my-4 -mr-2 md:-mr-6"
+              : "my-0 mr-2 md:mr-4"
+          }
           transition-all duration-300 transform
-          ${isScrolled ? 'scale-[0.7] md:scale-[0.6]' : 'scale-100'}
-        `}>
+          ${isScrolled ? "scale-[0.7] md:scale-[0.6]" : "scale-100"}
+        `}
+        >
           <a
             href="https://raydium.io/swap/?outputMint=2mysC3fDxCUG4T6gBBWn35a8VkykqY1A9Hj7fkiApump&inputMint=sol"
             target="_blank"
@@ -83,12 +98,12 @@ const Header = () => {
           </a>
         </div>
       </div>
-      
-      <div 
+
+      <div
         className={`
           w-full h-1 bg-maroon
           transition-all duration-300
-          ${isScrolled ? 'opacity-100' : 'opacity-0'}
+          ${isScrolled ? "opacity-100" : "opacity-0"}
         `}
       />
     </div>

@@ -1,13 +1,15 @@
-import React from "react";
 import Hero from "./Hero";
 import Utilities from "./Utilities";
 import HowToBuy from "./HowToBuy";
 import Tokenomics from "./Tokenomics";
 import Marquee from "react-fast-marquee";
+import Header from "../../layout/Header";
+import Footer from "../../layout/Footer";
 
 const Home = () => {
   return (
     <>
+      <Header />
       <Hero />
 
       <Marquee
@@ -41,6 +43,8 @@ const Home = () => {
           Father is with Me, Father is with You, Father is with Us!
         </div>
       </Marquee>
+
+      <Footer />
     </>
   );
 };
