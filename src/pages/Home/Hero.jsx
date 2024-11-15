@@ -1,12 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Telegram from "../../components/svg/Telegram";
 import Twitter from "../../components/svg/Twitter";
 import gsap from "gsap";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const logo = useRef();
   const button = useRef();
   const heading = useRef();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const socials = document.querySelectorAll(".hero-social");
@@ -48,7 +51,10 @@ const Hero = () => {
 
         <a
           ref={button}
-          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/bounty-hunter");
+          }}
           target="_blank"
           className="bg-maroon text-pale-gold border-4 border-pale-gold text-2xl lg:text-[30px] 2xl:text-[38px] leading-[1.25] py-2.5 lg:py-3 px-6 lg:px-8 absolute rotate-[3.02deg] left-[2%] xs:left-[6%] bottom-[-28%] xs:bottom-[-25%] hover:![scale:1.03] transition-[scale] duration-200"
         >

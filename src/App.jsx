@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import Header from "./layout/Header";
+import { useEffect } from "react";
 import Home from "./pages/Home";
-import Footer from "./layout/Footer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import BountyHunter from "./components/BountyHunter";
 
 const App = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -14,11 +14,20 @@ const App = () => {
     }, 100);
   }, []);
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/bounty-hunter",
+      element: <BountyHunter />,
+    },
+  ]);
+
   return (
     <>
-      <Header />
-      <Home />
-      <Footer />
+      <RouterProvider router={router} />
     </>
   );
 };
