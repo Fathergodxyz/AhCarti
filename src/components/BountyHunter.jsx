@@ -1,12 +1,16 @@
 import BACKGROUND_IMAGE from "../assets/images/appScreen.png";
 import { BLESSINGS, GOAL_MARKET_CAP, GRAPH_URL } from "../constants/VALUES";
 import Header from "../layout/Header";
-import "./BountyHunter.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Tooltip from "./Tooltip";
+import { Fireworks } from "@fireworks-js/react";
+
+import "./BountyHunter.css";
 
 const BountyHunter = () => {
+  const ref = useRef(null);
   const [marketCap, setMarketCap] = useState(0);
+  const [formattedMarketCap, setFormattedMarketCap] = useState(0);
 
   useEffect(() => {
     updateMarketCap();
@@ -28,7 +32,9 @@ const BountyHunter = () => {
         maximumFractionDigits: 0,
       }).format(marketCap);
 
-      setMarketCap(formattedMarketCap);
+      setFormattedMarketCap(formattedMarketCap);
+
+      setMarketCap(marketCap);
     } catch (error) {
       console.error("Error fetching market cap:", error);
     }
@@ -48,9 +54,31 @@ const BountyHunter = () => {
     maximumFractionDigits: 0,
   }).format(GOAL_MARKET_CAP);
 
+  useEffect(() => {
+    if (!ref.current) return;
+    if (marketCap >= GOAL_MARKET_CAP) {
+      ref.current?.start();
+    } else {
+      ref.current?.stop();
+      ref.current?.clear();
+    }
+  }, [marketCap, ref]);
+
   return (
-    <div className=" overflow-hidden flex flex-col items-center justify-end h-screen bg-[url(/hero-bg.png)] bg-cover bg-center">
-      <div className="fireworks-container fixed inset-0 pointer-events-none w-full h-full" />
+    <div className="overflow-hidden flex flex-col items-center justify-end h-screen bg-[url(/hero-bg.png)] bg-cover bg-center">
+      <Fireworks
+        ref={ref}
+        options={{ opacity: 0.5 }}
+        style={{
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          position: "fixed",
+          zIndex: 999,
+          pointerEvents: "none",
+        }}
+      />
 
       <Header />
 
@@ -71,7 +99,7 @@ const BountyHunter = () => {
         </p>
 
         <p className="absolute top-[480px] left-[102px]  w-[232px] h-[50px] text-red-500 text-center flex items-center justify-center text-[45px] font-['DS-Digital'] p-0 m-0 hover:scale-150 hover:bg-[#2c2b28] hover:shadow-2xl rounded-md cursor-default z-10">
-          {marketCap}
+          {formattedMarketCap}
         </p>
 
         <a
