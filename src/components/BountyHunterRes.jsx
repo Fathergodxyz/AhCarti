@@ -131,7 +131,7 @@ const BountyHunter = () => {
             <iframe
               sandbox
               className="h-[100%] w-[100%] hover:scale-150 transition-transform duration-200 hover:z-40 -z-10"
-              src={GRAPH_URL}
+              src={"https://company.mpacoaching.com/auth/signin"}
               title="Dexscreener embed"
             />
 
