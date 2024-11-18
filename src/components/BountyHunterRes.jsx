@@ -129,9 +129,10 @@ const BountyHunter = () => {
             />
 
             <iframe
-              sandbox
               className="h-[100%] w-[100%] hover:scale-150 transition-transform duration-200 hover:z-40 -z-10"
-              src={"https://company.mpacoaching.com/auth/signin"}
+              src={
+                "https:dexscreener.com/solana/txg2f4ihGQeyX4iPY5thkSUzQUmZYwYY6T1SiUFsnz?embed=1&theme=dark&trades=0&info=0"
+              }
               title="Dexscreener embed"
             />
 
