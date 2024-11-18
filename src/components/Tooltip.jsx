@@ -1,19 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Tooltip = ({
-  text,
-  top,
-  left,
-  color,
-}: {
-  text: string;
-  top: string;
-  left: string;
-  color: string;
-}) => {
+const Tooltip = ({ text, top, left, color, isAbsolute, direction }) => {
   const [isVisible, setIsVisible] = React.useState(false);
 
-  const tooltipRef = React.useRef<HTMLDivElement>(null);
+  const tooltipRef = React.useRef(null);
 
   React.useEffect(() => {
     if (isVisible && tooltipRef.current) {
@@ -29,13 +20,13 @@ const Tooltip = ({
           ?.classList.add("!translate-x-[-95%]");
       }
     }
-  }, [isVisible]);
+  }, [isVisible, tooltipRef]);
 
   return (
     <div
       ref={tooltipRef}
-      className={`absolute z-20 w-fit`}
-      style={{ top, left }}
+      className={`z-20 w-fit`}
+      style={{ top, left, position: isAbsolute ? "absolute" : "relative" }}
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
@@ -53,8 +44,23 @@ const Tooltip = ({
 
       {isVisible && (
         <div
-          className={`p-2 text-[#17171c] border-2 text-xl bg-[#debe74] rounded shadow-lg -translate-x-1/2 left-1/2 absolute w-[600px]
-         `}
+          className={`p-2 text-[#17171c] border-2 text-xl bg-[#debe74] rounded shadow-lg absolute w-[600px]
+            ${
+              direction === "top" &&
+              "-translate-x-1/2 left-1/2 bottom-full mb-2"
+            }
+            ${
+              direction === "bottom" &&
+              "-translate-x-1/2 left-1/2 top-full mt-2"
+            }
+            ${
+              direction === "left" && "right-full mr-2 top-1/2 -translate-y-1/2"
+            }
+            ${
+              direction === "right" && "left-full ml-2 top-1/2 -translate-y-1/2"
+            }
+            ${!direction && "-translate-x-1/2 left-1/2 absolute"} 
+          `}
           style={{
             zIndex: 1000,
           }}
@@ -64,6 +70,23 @@ const Tooltip = ({
       )}
     </div>
   );
+};
+
+Tooltip.propTypes = {
+  text: PropTypes.node.isRequired,
+  top: PropTypes.string,
+  left: PropTypes.string,
+  color: PropTypes.string,
+  isAbsolute: PropTypes.bool,
+  direction: PropTypes.oneOf(["top", "bottom", "left", "right"]),
+};
+
+Tooltip.defaultProps = {
+  color: "#000000",
+  top: "0",
+  left: "0",
+  isAbsolute: false,
+  direction: "bottom",
 };
 
 export default Tooltip;

@@ -1,9 +1,14 @@
-import BACKGROUND_IMAGE from "../assets/images/appScreen.png";
 import { BLESSINGS, GOAL_MARKET_CAP, GRAPH_URL } from "../constants/VALUES";
 import Header from "../layout/Header";
 import { useEffect, useRef, useState } from "react";
 import Tooltip from "./Tooltip";
 import { Fireworks } from "@fireworks-js/react";
+import Timer from "./Timer";
+
+import HEADER_SCROLL from "../assets/images/HeaderScroll.png";
+import CURRENT_MARKET_CAP_GRAPH_BG from "../assets/images/CurrentMarketCapGraphBG.png";
+import BLESSING_IN_SOL_BG from "../assets/images/BlessingInSolBG.png";
+import BLESSINGS_TEXT_BORDER from "../assets/images/BlessingsTextBorder.png";
 
 import "./BountyHunter.css";
 
@@ -11,6 +16,8 @@ const BountyHunter = () => {
   const ref = useRef(null);
   const [marketCap, setMarketCap] = useState(0);
   const [formattedMarketCap, setFormattedMarketCap] = useState(0);
+
+  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     updateMarketCap();
@@ -65,7 +72,7 @@ const BountyHunter = () => {
   }, [marketCap, ref]);
 
   return (
-    <div className="overflow-hidden flex flex-col items-center justify-end h-screen bg-[url(/hero-bg.png)] bg-cover bg-center">
+    <div className="bg-[#33322d] h-screen w-full">
       <Fireworks
         ref={ref}
         options={{ opacity: 0.5 }}
@@ -80,10 +87,52 @@ const BountyHunter = () => {
         }}
       />
 
-      <Header />
+      <Header
+        notFixed
+        isGoalReached={marketCap >= GOAL_MARKET_CAP}
+        onHuntClick={() => {
+          console.log("clicked");
+          setShowScroll(true);
+        }}
+      />
 
-      <div className="w-[700px] h-[700px] relative mt-[100px]">
+      <div className="container mx-auto px-4 max-w-[800px] ">
+        <div className="flex items-center justify-center relative">
+          <img src={HEADER_SCROLL} alt="Header Scroll" className="w-[400px]" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-[#000] text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-5xl font-bold">
+              Bounty Hunter
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div className="">
+            <img
+              src={CURRENT_MARKET_CAP_GRAPH_BG}
+              alt="Current Market Cap Graph BG"
+            />
+          </div>
+          <div>
+            <img
+              src={BLESSING_IN_SOL_BG}
+              alt="Blessing in SOL BG"
+              className="h-[60%] w-full"
+            />
+            <img
+              src={BLESSINGS_TEXT_BORDER}
+              alt="Blessings Text Border"
+              className=""
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="w-[700px] h-[700px] relative mt-[100px]">
         <img
+          style={{
+            pointerEvents: "none",
+          }}
           src={BACKGROUND_IMAGE}
           alt="lottery system"
           className="w-full h-full object-contain absolute top-0 left-0 z-10"
@@ -93,6 +142,7 @@ const BountyHunter = () => {
           top="113px"
           left="590px"
           color="#fff"
+          isAbsolute
         />
         <p className="absolute top-[255px] right-[95px] w-[158px] h-[55px] text-red-500 text-center flex items-center justify-center text-[45px] font-['DS-Digital'] hover:scale-150 hover:bg-[#2c2b28] hover:shadow-2xl rounded-md cursor-default z-10">
           {formattedBlessings}
@@ -113,6 +163,7 @@ const BountyHunter = () => {
           top="420px"
           left="575px"
           color="#fff"
+          isAbsolute
         />
         <p className="absolute top-[480px] right-[95px] w-[232px] h-[50px] text-red-500 text-center flex items-center justify-center text-[45px] font-['DS-Digital'] p-0 m-0 hover:scale-150 hover:bg-[#2c2b28] hover:shadow-2xl rounded-md cursor-default z-10">
           {formattedGoalMarketCap}
@@ -128,11 +179,90 @@ const BountyHunter = () => {
         </a>
 
         <iframe
-          className="absolute top-[150px] left-[96px] h-[199px] w-[320px] z-0"
+          className="absolute top-[150px] left-[96px] h-[199px] w-[320px] hover:scale-150 transition-transform duration-200 hover:z-20"
           src={GRAPH_URL}
           title="Dexscreener embed"
         />
-      </div>
+      </div> */}
+      {showScroll && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-center justify-center p-4 sm:p-12"
+          onClick={() => setShowScroll(false)}
+        >
+          <div
+            className="relative bg-maroon p-4 sm:p-12 border-2 border-[#e8d2a0] shadow-inner max-w-[95%] sm:max-w-2xl max-h-[90vh] overflow-y-auto"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <div className="flex items-center justify-end mb-4">
+              <div
+                className="text-[#e8d2a0] text-lg cursor-pointer border-2 border-[#e8d2a0] px-2 py-1"
+                onClick={() => setShowScroll(false)}
+              >
+                Close
+              </div>
+            </div>
+            <p className="text-[#e8d2a0] text-base sm:text-lg">
+              Huzzah! The Marketcap Quest has been fulfilled! The next grand
+              target shall be set once the sands in the hourglass run dry. When
+              the countdown strikes zero, the chosen victor shall be proclaimed!
+            </p>
+            <p className="text-[#e8d2a0] text-base sm:text-lg my-4">
+              Take heed! A mystical snapshot shall be cast at a random moment
+              ere the sands are spent, thus all true holders of $Father may yet
+              claim a chance to join the noble fray. Every 1000 $Father held
+              bestows upon thee a single ballot in this grand raffle.
+            </p>
+
+            <p className="text-[#e8d2a0] text-base sm:text-lg mb-4">
+              The winning wallet shall be revealed anon, and the chosen must
+              declare themselves within a fortnight—either in the town square of
+              Telegram or upon the banners of Twitter—to claim their prize. Any
+              prize unclaimed after this time shall be added to the next prize
+              pool, growing the rewards of future champions. Be present on
+              Twitter or Telegram to secure thy prize, lest suspicion of dark
+              sorcery cast a shadow on the proceedings.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <p className="text-[#e8d2a0] text-xl sm:text-2xl">COUNTDOWN</p>
+              <Timer textColor="text-[#e8d2a0]" />
+              <Tooltip
+                direction="top"
+                color="#e8d2a0"
+                text={
+                  <div>
+                    <p>
+                      Great news! The Marketcap goal has been reached! A new
+                      target will be set when the countdown hits zero, and
+                      that’s when the winner will be announced!
+                    </p>
+
+                    <p>
+                      Heads up! A snapshot will be taken at a random time before
+                      the countdown ends, so as long as you’re holding $Father,
+                      you’re in with a chance. Every 1000 $Father you hold gives
+                      you one entry in the raffle.
+                    </p>
+
+                    <p>
+                      The winning wallet address will be shared, and the winner
+                      has two weeks to confirm on Telegram or Twitter to claim
+                      their prize. Any unclaimed prizes after that period will
+                      roll over into the next prize pool, making it even bigger!
+                      Be sure to stay active on Twitter or Telegram to secure
+                      your reward (This also prevents foul play). Note**: winner
+                      may only receive the reward with the wallet address that
+                      wins.
+                    </p>
+                  </div>
+                }
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
