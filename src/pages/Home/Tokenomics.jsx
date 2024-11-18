@@ -32,13 +32,13 @@ const Tokenomics = () => {
     <div className="relative">
       {/* Top cloud transition */}
       <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-[0] transform -translate-y-[1px] z-10">
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 1440 100" 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 100"
           preserveAspectRatio="none"
           className="relative block w-full h-[60px] sm:h-[80px] md:h-[100px]"
         >
-          <path 
+          <path
             d="M0,20
                C60,20 120,40 180,40
                C240,40 300,20 360,20
@@ -48,7 +48,7 @@ const Tokenomics = () => {
                C960,35 1020,20 1080,20
                C1140,20 1200,45 1260,45
                C1320,45 1380,20 1440,20
-               L1440,0 L0,0 Z" 
+               L1440,0 L0,0 Z"
             fill="#ebeef2"
           />
         </svg>
@@ -71,16 +71,21 @@ const Tokenomics = () => {
               <div className="text-xl sm:text-2xl md:text-[clamp(20px,2.6vw,28px)] lg:text-[28px] xl:text-[32px] 2xl:text-[40px] font-madimi text-white !leading-[1.3] text-center md:text-center w-full md:w-1/2 slide-in-item">
                 <p>
                   Our token was crafted through the arcane mysteries of{" "}
-                  <a href="https://pump.fun" target="_blank" className="text-[red] underline">
+                  <a
+                    href="https://pump.fun"
+                    target="_blank"
+                    className="text-[red] underline"
+                  >
                     pump.fun
                   </a>{" "}
                   . the liquidity pool has been cast into the eternal flames,
-                  the contract's ownership renounced to the realm, with no taxes upon trade,
-                  and a fixed supply of 976 million tokens.
+                  the contract's ownership renounced to the realm, with no taxes
+                  upon trade, and a fixed supply of 976 million tokens.
                 </p>
 
                 <p className="text-[red]">
-                  Only Those that keep $FATHER near may see their blessing in $SOL
+                  Only Those that keep $FATHER near may see their blessing in
+                  $SOL
                 </p>
               </div>
             </div>

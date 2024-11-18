@@ -76,8 +76,15 @@ const BountyHunter = () => {
     }
   }, [marketCap, ref]);
 
+  useEffect(() => {
+    document.body.style.backgroundColor = "#2D2C28";
+    return () => {
+      document.body.style.backgroundColor = "#5a5d5e";
+    };
+  }, []);
+
   return (
-    <div className="bg-[#2D2C28] h-[100%] w-full">
+    <div className="bg-[#2D2C28] w-full">
       <Fireworks
         ref={ref}
         options={{ opacity: 0.5 }}

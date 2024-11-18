@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 const HowToBuy = () => {
   const wrapper = useRef();
@@ -37,7 +37,7 @@ const HowToBuy = () => {
           </h2>
 
           <p className="font-madimi text-2xl md:text-[28px] lg:text-[32px] xl:text-[36px] 2xl:text-[50px] text-maroon max-w-[18.1em] !leading-[1.25] mt-3 slide-in-item">
-          Follow these easy steps to become a Father holder.
+            Follow these easy steps to become a Father holder.
           </p>
         </div>
 
@@ -48,7 +48,11 @@ const HowToBuy = () => {
 
               <p>
                 Journey to the realm of{" "}
-                <a href="https://phantom.app" target="_blank" className="text-maroon underline">
+                <a
+                  href="https://phantom.app"
+                  target="_blank"
+                  className="text-maroon underline"
+                >
                   phantom.app
                 </a>{" "}
                 and follow the simple rites to forge your account using the
