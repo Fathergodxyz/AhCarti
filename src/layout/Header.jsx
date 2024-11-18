@@ -37,11 +37,12 @@ const Header = ({ isGoalReached, onHuntClick, notFixed }) => {
       ref={wrapper}
       style={{
         position: notFixed ? "relative" : "fixed",
+        backgroundColor: isGoalReached ? "#e8d2a0" : "transparent",
       }}
       className={`
          top-0 left-0 w-full z-50
         transition-all duration-300 ease-in-out
-
+       
         ${
           isScrolled
             ? "bg-[#e8d2a0]/80 backdrop-blur-sm shadow-lg"
