@@ -12,7 +12,7 @@ import BLESSINGS_TEXT_BORDER from "../assets/images/BlessingsTextBorder.png";
 import MARKET_CAP_TEXT_BORDER from "../assets/images/MarketCapTextBorder.png";
 import MARKET_CAP_HEADER_BORDER from "../assets/images/MarketCapHeaderBorder.png";
 import POWERED_BY from "../assets/images/PoweredByBG.png";
-import KNOB from "../assets/images/knob.png";
+import KNOB from "../assets/images/Knob.png";
 import BUY_BUTTON from "../assets/images/BuyButtonBG.png";
 
 import "./BountyHunter.css";
