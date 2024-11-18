@@ -82,7 +82,6 @@ const BountyHunter = () => {
           pointerEvents: "none",
         }}
       />
-
       <Header
         isGoalReached={marketCap >= GOAL_MARKET_CAP}
         onHuntClick={() => {
@@ -90,7 +89,7 @@ const BountyHunter = () => {
           setShowScroll(true);
         }}
       />
-
+      -
       <div className="w-[700px] h-[700px] relative mt-[100px]">
         <img
           style={{
