@@ -1,14 +1,10 @@
+import BACKGROUND_IMAGE from "../assets/images/appScreen.png";
 import { BLESSINGS, GOAL_MARKET_CAP, GRAPH_URL } from "../constants/VALUES";
 import Header from "../layout/Header";
 import { useEffect, useRef, useState } from "react";
 import Tooltip from "./Tooltip";
 import { Fireworks } from "@fireworks-js/react";
 import Timer from "./Timer";
-
-import HEADER_SCROLL from "../assets/images/HeaderScroll.png";
-import CURRENT_MARKET_CAP_GRAPH_BG from "../assets/images/CurrentMarketCapGraphBG.png";
-import BLESSING_IN_SOL_BG from "../assets/images/BlessingInSolBG.png";
-import BLESSINGS_TEXT_BORDER from "../assets/images/BlessingsTextBorder.png";
 
 import "./BountyHunter.css";
 
@@ -72,7 +68,7 @@ const BountyHunter = () => {
   }, [marketCap, ref]);
 
   return (
-    <div className="bg-[#33322d] h-screen w-full">
+    <div className="overflow-y-hidden flex flex-col items-center justify-end h-screen bg-[url(/hero-bg.png)] bg-cover bg-center">
       <Fireworks
         ref={ref}
         options={{ opacity: 0.5 }}
@@ -88,7 +84,6 @@ const BountyHunter = () => {
       />
 
       <Header
-        notFixed
         isGoalReached={marketCap >= GOAL_MARKET_CAP}
         onHuntClick={() => {
           console.log("clicked");
@@ -96,39 +91,7 @@ const BountyHunter = () => {
         }}
       />
 
-      <div className="container mx-auto px-4 max-w-[800px] ">
-        <div className="flex items-center justify-center relative">
-          <img src={HEADER_SCROLL} alt="Header Scroll" className="w-[400px]" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="text-[#000] text-3xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-5xl font-bold">
-              Bounty Hunter
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <div className="">
-            <img
-              src={CURRENT_MARKET_CAP_GRAPH_BG}
-              alt="Current Market Cap Graph BG"
-            />
-          </div>
-          <div>
-            <img
-              src={BLESSING_IN_SOL_BG}
-              alt="Blessing in SOL BG"
-              className="h-[60%] w-full"
-            />
-            <img
-              src={BLESSINGS_TEXT_BORDER}
-              alt="Blessings Text Border"
-              className=""
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* <div className="w-[700px] h-[700px] relative mt-[100px]">
+      <div className="w-[700px] h-[700px] relative mt-[100px]">
         <img
           style={{
             pointerEvents: "none",
@@ -183,7 +146,7 @@ const BountyHunter = () => {
           src={GRAPH_URL}
           title="Dexscreener embed"
         />
-      </div> */}
+      </div>
       {showScroll && (
         <div
           className="fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-center justify-center p-4 sm:p-12"

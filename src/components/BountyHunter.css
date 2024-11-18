@@ -11,6 +11,11 @@
 .buy-here-button {
   background: linear-gradient(to bottom, #31532c, #284525);
 }
+.market-cap-text {
+  background-image: linear-gradient(to bottom, #cea97b, #9e7039);
+  background-clip: text;
+  color: transparent;
+}
 /* 
 .container {
   display: flex;

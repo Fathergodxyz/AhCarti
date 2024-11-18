@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BountyHunter from "./components/BountyHunter";
+import BountyHunterRes from "./components/BountyHunterRes";
 
 const App = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -21,7 +21,7 @@ const App = () => {
     },
     {
       path: "/bounty-hunter",
-      element: <BountyHunter />,
+      element: <BountyHunterRes />,
     },
   ]);
 
