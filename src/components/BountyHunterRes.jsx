@@ -127,12 +127,14 @@ const BountyHunter = () => {
                 pointerEvents: "none",
               }}
             />
+
             <iframe
-              sandbox="true"
+              sandbox
               className="h-[100%] w-[100%] hover:scale-150 transition-transform duration-200 hover:z-40 -z-10"
               src={GRAPH_URL}
               title="Dexscreener embed"
             />
+
             {/* </div> */}
           </div>
           <div>
