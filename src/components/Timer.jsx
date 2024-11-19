@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { DUE_DATE } from "../constants/VALUES";
 import PropTypes from "prop-types";
 
-const Timer = ({ textColor }) => {
+const Timer = ({ textColor, isTimeOver }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -29,6 +29,12 @@ const Timer = ({ textColor }) => {
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    const difference = new Date(DUE_DATE) - new Date();
+    const timeOver = difference <= 1500;
+    isTimeOver && isTimeOver(timeOver);
+  }, [timeLeft, isTimeOver]);
 
   return (
     <div className="flex justify-center items-center px-4 py-2">
@@ -64,6 +70,7 @@ const Timer = ({ textColor }) => {
 
 Timer.propTypes = {
   textColor: PropTypes.string,
+  isTimeOver: PropTypes.func,
 };
 
 export default Timer;

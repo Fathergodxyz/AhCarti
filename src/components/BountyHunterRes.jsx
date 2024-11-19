@@ -24,6 +24,8 @@ const BountyHunter = () => {
 
   const [showScroll, setShowScroll] = useState(false);
 
+  const [isTimeOver, setIsTimeOver] = useState(false);
+
   useEffect(() => {
     updateMarketCap();
   }, []);
@@ -101,8 +103,8 @@ const BountyHunter = () => {
       <Header
         notFixed
         isGoalReached={marketCap >= GOAL_MARKET_CAP}
+        isTimeOver={!isTimeOver}
         onHuntClick={() => {
-          console.log("clicked");
           setShowScroll(true);
         }}
       />
@@ -310,7 +312,7 @@ const BountyHunter = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <p className="text-[#e8d2a0] text-xl sm:text-2xl">COUNTDOWN</p>
-              <Timer textColor="text-[#e8d2a0]" />
+              <Timer textColor="text-[#e8d2a0]" isTimeOver={setIsTimeOver} />
               <Tooltip
                 direction="top"
                 color="#e8d2a0"

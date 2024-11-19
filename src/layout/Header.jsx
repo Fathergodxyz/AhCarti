@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Timer from "../components/Timer";
+import { TIME_OVER_MESSAGE } from "../constants/VALUES";
 
 const Header = ({ isGoalReached, onHuntClick, notFixed }) => {
   const wrapper = useRef();
@@ -9,6 +10,8 @@ const Header = ({ isGoalReached, onHuntClick, notFixed }) => {
   const navigate = useNavigate();
 
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const [isTimeOver, setIsTimeOver] = useState(false);
 
   useEffect(() => {
     // Initial animation
@@ -84,15 +87,22 @@ const Header = ({ isGoalReached, onHuntClick, notFixed }) => {
           </div>
         </a>
 
-        {isGoalReached && (
+        {isGoalReached && !isTimeOver && (
           <div className="flex items-center gap-4" onClick={onHuntClick}>
-            <Timer textColor="text-maroon" />
+            <Timer textColor="text-maroon" isTimeOver={setIsTimeOver} />
 
             <p className="text-2xl cursor-pointer bg-maroon text-[#e8d2a0] px-4 py-2 ">
               Join the hunt!
             </p>
           </div>
         )}
+
+        {isGoalReached && isTimeOver && (
+          <p className="text-2xl bg-maroon text-[#e8d2a0] px-4 py-2 ">
+            {TIME_OVER_MESSAGE}
+          </p>
+        )}
+
         {!isGoalReached && (
           <div
             className={`

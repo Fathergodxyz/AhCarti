@@ -1,5 +1,4 @@
-import React from "react";
-
+import PropTypes from "prop-types";
 const Telegram = ({ className = "" }) => {
   return (
     <div className={`relative isolate ${className}`}>
@@ -20,6 +19,10 @@ const Telegram = ({ className = "" }) => {
       </svg>
     </div>
   );
+};
+
+Telegram.propTypes = {
+  className: PropTypes.string,
 };
 
 export default Telegram;

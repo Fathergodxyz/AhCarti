@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import PropTypes from "prop-types";
 
 const HowToBuy = () => {
   const wrapper = useRef();
@@ -115,4 +116,8 @@ const Card = ({ children }) => {
       {children}
     </div>
   );
+};
+
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
 };

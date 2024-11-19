@@ -85,7 +85,6 @@ const BountyHunter = () => {
       <Header
         isGoalReached={marketCap >= GOAL_MARKET_CAP}
         onHuntClick={() => {
-          console.log("clicked");
           setShowScroll(true);
         }}
       />
