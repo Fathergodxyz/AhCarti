@@ -130,9 +130,7 @@ const BountyHunter = () => {
 
             <iframe
               className="h-[100%] w-[100%] hover:scale-150 transition-transform duration-200 hover:z-40 -z-10"
-              src={
-                "https:dexscreener.com/solana/txg2f4ihGQeyX4iPY5thkSUzQUmZYwYY6T1SiUFsnz?embed=1&theme=dark&trades=0&info=0"
-              }
+              src={GRAPH_URL}
               title="Dexscreener embed"
             />
 

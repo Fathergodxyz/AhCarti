@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 const Tokenomics = () => {
   const wrapper = useRef();
@@ -79,8 +79,8 @@ const Tokenomics = () => {
                     pump.fun
                   </a>{" "}
                   . the liquidity pool has been cast into the eternal flames,
-                  the contract's ownership renounced to the realm, with no taxes
-                  upon trade, and a fixed supply of 976 million tokens.
+                  the contract&apos;s ownership renounced to the realm, with no
+                  taxes upon trade, and a fixed supply of 976 million tokens.
                 </p>
 
                 <p className="text-[red]">
