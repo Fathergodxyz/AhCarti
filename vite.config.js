@@ -28,6 +28,12 @@ export default defineConfig({
     'global': 'globalThis',
     'process.env': {},
   },
+  css: {
+    postcss: './postcss.config.js',
+    modules: {
+      localsConvention: 'camelCase'
+    }
+  },
   build: {
     rollupOptions: {
       external: ['fs', 'path'],
@@ -48,6 +54,12 @@ export default defineConfig({
     },
     sourcemap: true,
     target: 'esnext',
+  },
+  optimizeDeps: {
+    include: ['tailwindcss', 'postcss', 'autoprefixer'],
+    esbuildOptions: {
+      target: 'esnext'
+    }
   },
   server: {
     host: true,
