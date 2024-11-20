@@ -3,17 +3,12 @@ import Utilities from "./Utilities";
 import HowToBuy from "./HowToBuy";
 import Tokenomics from "./Tokenomics";
 import Marquee from "react-fast-marquee";
-import Header from "../../layout/Header";
+import Header from "../../layout/header";
 import Footer from "../../layout/Footer";
 
 const Home = () => {
   return (
-<<<<<<< HEAD
-    <>
-      <Header />
-=======
     <main className="flex flex-col">
->>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
       <Hero />
 
       <Marquee
@@ -44,13 +39,7 @@ const Home = () => {
           Father is with Me, Father is with You, Father is with Us!
         </div>
       </Marquee>
-<<<<<<< HEAD
-
-      <Footer />
-    </>
-=======
     </main>
->>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
   );
 };
 

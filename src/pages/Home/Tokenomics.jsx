@@ -1,13 +1,9 @@
 // src/pages/Home/Tokenomics.jsx
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-<<<<<<< HEAD
-import { useRef } from "react";
-=======
 import React, { useRef, useState } from "react";
 import SwapModal from "../../components/swapmodal";
 import { useWallet } from '../../context/WalletContext';
->>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
 
 const Tokenomics = () => {
   const wrapper = useRef();
@@ -97,15 +93,7 @@ const Tokenomics = () => {
               <div className="text-xl sm:text-2xl md:text-[clamp(20px,2.6vw,28px)] lg:text-[28px] xl:text-[32px] 2xl:text-[40px] font-madimi text-white !leading-[1.3] text-center md:text-center w-full md:w-1/2 slide-in-item">
                 <p>
                   Our token was crafted through the arcane mysteries of{" "}
-<<<<<<< HEAD
-                  <a
-                    href="https://pump.fun"
-                    target="_blank"
-                    className="text-[red] underline"
-                  >
-=======
                   <a href="https://pump.fun" target="_blank" rel="noopener noreferrer" className="text-[red] underline">
->>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
                     pump.fun
                   </a>{" "}
                   . the liquidity pool has been cast into the eternal flames,

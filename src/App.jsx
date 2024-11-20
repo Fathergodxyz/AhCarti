@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-import { useEffect } from "react";
-import Home from "./pages/Home";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BountyHunterRes from "./components/BountyHunterRes";
-=======
 import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
-import Header from "./layout/Header";
+import Header from "./layout/header";
 import Footer from "./layout/Footer";
 import Home from "./pages/Home";
 import BountyHunterRes from "./components/BountyHunterRes";
@@ -66,7 +58,6 @@ const BountyHunterLayout = ({ children }) => {
     </>
   );
 };
->>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
 
 const App = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -77,16 +68,6 @@ const App = () => {
     }, 100);
   }, []);
 
-<<<<<<< HEAD
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/bounty-hunter",
-      element: <BountyHunterRes />,
-=======
   // Define routes with appropriate layouts
   const router = createBrowserRouter([
     {
@@ -104,20 +85,13 @@ const App = () => {
           <BountyHunterRes />
         </BountyHunterLayout>
       ),
->>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
     },
   ]);
 
   return (
-<<<<<<< HEAD
-    <>
-      <RouterProvider router={router} />
-    </>
-=======
     <WalletProvider>
       <RouterProvider router={router} />
     </WalletProvider>
->>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
   );
 };
 
