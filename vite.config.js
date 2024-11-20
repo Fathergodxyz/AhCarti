@@ -11,6 +11,9 @@ export default defineConfig({
       globals: {
         Buffer: true,
       },
+      overrides: {
+        fs: 'memfs',
+      },
     }),
   ],
   resolve: {
@@ -18,28 +21,40 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
       'stream': 'stream-browserify',
       'buffer': 'buffer',
+      'util': 'util',
     }
   },
   define: {
     'global': 'globalThis',
-    'process.env': {}
+    'process.env': {},
   },
   build: {
     rollupOptions: {
       external: ['fs', 'path'],
+      output: {
+        manualChunks: {
+          'solana-web3': ['@solana/web3.js'],
+          'vendor': [
+            'react',
+            'react-dom',
+            'react-router-dom',
+          ],
+        },
+      },
     },
     commonjsOptions: {
       include: [/node_modules/],
+      transformMixedEsModules: true,
     },
+    sourcemap: true,
+    target: 'esnext',
   },
-  optimizeDeps: {
-    include: [
-      '@solana/web3.js',
-      '@solana/buffer-layout',
-      'buffer',
-    ],
-    esbuildOptions: {
-      target: 'esnext',
-    }
-  }
+  server: {
+    host: true,
+    port: process.env.PORT || 3000,
+  },
+  preview: {
+    host: true,
+    port: process.env.PORT || 3000,
+  },
 });
