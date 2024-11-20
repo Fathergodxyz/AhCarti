@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Connection, PublicKey, VersionedTransaction } from '@solana/web3.js';
 import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
-import { TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { struct, u8, blob } from '@solana/buffer-layout';
-import { publicKey } from '@solana/buffer-layout-utils';
+
 
 // SPL Token Account Layout
 const SPL_ACCOUNT_LAYOUT = struct([
