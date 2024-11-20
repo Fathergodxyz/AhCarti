@@ -12,7 +12,7 @@ import { WalletProvider } from './context/WalletContext';
 const DefaultLayout = ({ children }) => {
   useEffect(() => {
     // Reset background color for default layout
-    document.body.style.backgroundColor = "";
+    document.body.style.backgroundColor = "#e8d2a0";
     
     return () => {
       // Cleanup

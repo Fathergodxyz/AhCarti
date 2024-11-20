@@ -30,7 +30,7 @@ const HowToBuy = () => {
   );
 
   return (
-    <div ref={wrapper} className="bg-[#BDCAD250] section-wrapper">
+    <div ref={wrapper} className="bg-[#ebeef2] section-wrapper">
       <div className="flex flex-col items-center max-w-[1440px] w-[90%] sm:w-[93%]">
         <div className="text-center">
           <h2 className="uppercase text-[48px] xs:text-[56px] md:text-[64px] lg:text-[72px] xl:text-[80px] 2xl:text-[97px] text-maroon !leading-none slide-in-item">

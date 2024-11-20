@@ -23,7 +23,7 @@ const Home = () => {
       <Utilities />
       <HowToBuy />
       <Marquee
-        className="bg-[#BDCAD250] text-maroon text-[22px] sm:text-[26px] lg:text-[32px] 2xl:text-[40px] font-madimi !leading-[1.3] py-5"
+        className="bg-[#ebeef2] text-maroon text-[22px] sm:text-[26px] lg:text-[32px] 2xl:text-[40px] font-madimi !leading-[1.3] py-5"
         autoFill
       >
         <div className="px-[0.7em]">

@@ -3,8 +3,6 @@ import { Connection, PublicKey, VersionedTransaction } from '@solana/web3.js';
 import { PhantomWalletAdapter } from '@solana/wallet-adapter-phantom';
 import { struct, u8, blob } from '@solana/buffer-layout';
 
-
-// SPL Token Account Layout
 const SPL_ACCOUNT_LAYOUT = struct([
   blob(32, 'mint'),
   blob(32, 'owner'),
@@ -49,18 +47,15 @@ export const useSwap = () => {
       const connection = getConnection();
       const walletPubkey = new PublicKey(walletAddress);
 
-      // Handle SOL balance using getBalance
       if (tokenMint === TOKENS.SOL.mint) {
         const balance = await connection.getBalance(walletPubkey);
         return balance / Math.pow(10, TOKENS.SOL.decimals);
       }
 
-      // For FATHER token, use getParsedTokenAccountsByOwner for more detailed info
       const tokenAccounts = await connection.getParsedTokenAccountsByOwner(walletPubkey, {
         mint: new PublicKey(tokenMint)
       });
 
-      // Sum up all balances from token accounts (usually there's just one)
       const totalBalance = tokenAccounts.value.reduce((total, account) => {
         const tokenAmount = account.account.data.parsed.info.tokenAmount;
         return total + (tokenAmount.uiAmount || 0);
@@ -85,16 +80,14 @@ export const useSwap = () => {
       const solPriceData = await solPriceResponse.json();
       const solPriceUSDC = parseFloat(solPriceData.data[TOKENS.SOL.mint]?.price || 0);
 
-      // Get quote for 1 SOL to FATHER to determine price ratio
+      // Get quote for SOL to FATHER
       const quoteResponse = await fetch(
         `https://quote-api.jup.ag/v6/quote?inputMint=${TOKENS.SOL.mint}&outputMint=${TOKENS.FATHER.mint}&amount=1000000000&slippageBps=50`
       ).then(r => r.json());
 
-      // Calculate FATHER per SOL ratio
-      const fatherPerSol = quoteResponse.outAmount / Math.pow(10, TOKENS.FATHER.decimals);
-      
-      // Calculate FATHER price in USD based on SOL price
-      const fatherPriceUSDC = solPriceUSDC / fatherPerSol;
+      // Fix: Calculate FATHER per SOL ratio with correct decimal precision
+      const outAmountBN = BigInt(quoteResponse.outAmount);
+      const fatherPerSol = Number(outAmountBN) / 1e6; // Adjusted from 1e9 to 1e6 to fix decimal place
 
       // Extract liquidity from the best route
       const bestRoute = quoteResponse.routePlan?.[0] || {};
@@ -102,9 +95,9 @@ export const useSwap = () => {
 
       return {
         price: fatherPerSol,
-        poolLiquidity: poolLiquidity / 1e9, // Convert from lamports to SOL
+        poolLiquidity: poolLiquidity / 1e9,
         solPrice: solPriceUSDC,
-        fatherPrice: fatherPriceUSDC,
+        fatherPrice: solPriceUSDC / (fatherPerSol / 1e9),
         routes: quoteResponse.routePlan || []
       };
     } catch (err) {
@@ -133,7 +126,6 @@ export const useSwap = () => {
       const amountInRaw = Math.floor(amountIn * Math.pow(10, TOKENS[inputToken].decimals));
       const slippageBps = Math.floor(slippage * 100);
 
-      // 1. Get quote
       const quoteResponse = await (
         await fetch(
           `https://quote-api.jup.ag/v6/quote?inputMint=${inputMint}&outputMint=${outputMint}&amount=${amountInRaw}&slippageBps=${slippageBps}`
@@ -144,14 +136,12 @@ export const useSwap = () => {
         throw new Error('No valid routes found for swap');
       }
 
-      // Log the quote details for debugging
       console.log('Quote details:', {
         inputAmount: amountInRaw,
         outputAmount: quoteResponse.outAmount,
         routes: quoteResponse.routePlan
       });
 
-      // 2. Get swap transaction
       const { swapTransaction } = await (
         await fetch('https://quote-api.jup.ag/v6/swap', {
           method: 'POST',
@@ -166,30 +156,23 @@ export const useSwap = () => {
         })
       ).json();
 
-      // 3. Deserialize the transaction
       const swapTransactionBuf = Buffer.from(swapTransaction, 'base64');
       const transaction = VersionedTransaction.deserialize(swapTransactionBuf);
 
-      // 4. Get the latest blockhash
       const latestBlockhash = await connection.getLatestBlockhash();
-      
-      // 5. Request wallet signature
       const signed = await wallet.signTransaction(transaction);
 
-      // 6. Execute the transaction
       const txid = await connection.sendRawTransaction(signed.serialize(), {
         skipPreflight: true,
         maxRetries: 2
       });
 
-      // 7. Confirm transaction
       await connection.confirmTransaction({
         blockhash: latestBlockhash.blockhash,
         lastValidBlockHeight: latestBlockhash.lastValidBlockHeight,
         signature: txid
       }, 'confirmed');
 
-      // 8. Return transaction signature
       return {
         signature: txid,
         inputAmount: amountIn,

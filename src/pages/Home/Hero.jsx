@@ -8,12 +8,10 @@ const Hero = () => {
   const logo = useRef();
   const button = useRef();
   const heading = useRef();
-
   const navigate = useNavigate();
 
   useEffect(() => {
     const socials = document.querySelectorAll(".hero-social");
-
     const tl = gsap.timeline({ defaults: { ease: "power2.out" }, delay: 0.25 });
 
     tl.fromTo(
@@ -31,7 +29,16 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="h-screen min-h-[800px] bg-[url(/hero-bg.png)] bg-cover bg-center relative flex justify-center items-center pt-[1  vw] px-[5vw]">
+    <div 
+  className="h-screen min-h-[800px] relative flex justify-center items-center pt-[1vw] px-[5vw]"
+  style={{
+    backgroundColor: '',
+    backgroundImage: 'url(/rays.svg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  }}
+>
       <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] 2xl:max-w-[482px]">
         <img
           ref={logo}
