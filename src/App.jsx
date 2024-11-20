@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
-import Header from "./layout/header";
+import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import Home from "./pages/Home";
 import BountyHunterRes from "./components/BountyHunterRes";

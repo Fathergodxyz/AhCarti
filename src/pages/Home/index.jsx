@@ -3,7 +3,7 @@ import Utilities from "./Utilities";
 import HowToBuy from "./HowToBuy";
 import Tokenomics from "./Tokenomics";
 import Marquee from "react-fast-marquee";
-import Header from "../../layout/header";
+import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 
 const Home = () => {
