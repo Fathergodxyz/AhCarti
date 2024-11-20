@@ -1,6 +1,6 @@
 import BACKGROUND_IMAGE from "../assets/images/appScreen.png";
 import { BLESSINGS, GOAL_MARKET_CAP, GRAPH_URL } from "../constants/VALUES";
-import Header from "../layout/Header";
+import Header from "../layout/header";
 import { useEffect, useRef, useState } from "react";
 import Tooltip from "./Tooltip";
 import { Fireworks } from "@fireworks-js/react";
