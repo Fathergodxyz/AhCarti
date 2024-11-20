@@ -130,8 +130,17 @@ const Card = ({ children }) => {
       </p>
     </div>
   );
+<<<<<<< HEAD
 };
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
 };
+=======
+
+  Card.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+
+};
+>>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)

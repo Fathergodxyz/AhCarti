@@ -2,6 +2,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import PropTypes from "prop-types";
+<<<<<<< HEAD
+=======
+
+>>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
 
 const Slide = ({ children }) => {
   const item = useRef();

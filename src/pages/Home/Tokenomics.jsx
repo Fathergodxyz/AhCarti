@@ -1,9 +1,18 @@
+// src/pages/Home/Tokenomics.jsx
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+<<<<<<< HEAD
 import { useRef } from "react";
+=======
+import React, { useRef, useState } from "react";
+import SwapModal from "../../components/swapmodal";
+import { useWallet } from '../../context/WalletContext';
+>>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
 
 const Tokenomics = () => {
   const wrapper = useRef();
+  const [isSwapModalOpen, setIsSwapModalOpen] = useState(false);
+  const { walletAddress, connectWallet } = useWallet();
 
   useGSAP(
     () => {
@@ -27,6 +36,23 @@ const Tokenomics = () => {
     },
     { dependencies: [], revertOnUpdate: true }
   );
+
+  const handleSwapClick = async () => {
+    try {
+      if (!window?.phantom?.solana) {
+        window.open('https://phantom.app/', '_blank');
+        return;
+      }
+
+      if (!walletAddress) {
+        await connectWallet();
+      }
+      
+      setIsSwapModalOpen(true);
+    } catch (err) {
+      console.error('Failed to handle swap click:', err);
+    }
+  };
 
   return (
     <div className="relative">
@@ -55,7 +81,7 @@ const Tokenomics = () => {
       </div>
 
       <div ref={wrapper} className="bg-black section-wrapper">
-        <div className="flex flex-col items-center max-w-[1536px] gap-10 sm:gap-12 md:gap-16 lg:gap-24 w-[90%] sm:w-[93%]">
+        <div className="flex flex-col items-center max-w-[1536px] gap-10 sm:gap-12 md:gap-16 lg:gap-24 w-[90%] sm:w-[93%] mx-auto">
           <h2 className="uppercase text-[52px] xs:text-[60px] sm:text-[72px] md:text-[84px] lg:text-[100px] xl:text-[121px] 2xl:text-[147px] text-pale-gold !leading-[1.25] slide-in-item">
             Tokenomics
           </h2>
@@ -71,11 +97,15 @@ const Tokenomics = () => {
               <div className="text-xl sm:text-2xl md:text-[clamp(20px,2.6vw,28px)] lg:text-[28px] xl:text-[32px] 2xl:text-[40px] font-madimi text-white !leading-[1.3] text-center md:text-center w-full md:w-1/2 slide-in-item">
                 <p>
                   Our token was crafted through the arcane mysteries of{" "}
+<<<<<<< HEAD
                   <a
                     href="https://pump.fun"
                     target="_blank"
                     className="text-[red] underline"
                   >
+=======
+                  <a href="https://pump.fun" target="_blank" rel="noopener noreferrer" className="text-[red] underline">
+>>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
                     pump.fun
                   </a>{" "}
                   . the liquidity pool has been cast into the eternal flames,
@@ -116,16 +146,20 @@ const Tokenomics = () => {
               </div>
             </div>
 
-            <a
-              href="https://raydium.io/swap/?outputMint=2mysC3fDxCUG4T6gBBWn35a8VkykqY1A9Hj7fkiApump&inputMint=sol"
-              target="_blank"
-              className="bg-white text-maroon border-4 border-maroon text-2xl lg:text-[30px] 2xl:text-[38px] leading-[1.25] py-3 px-8 rotate-[3.02deg] uppercase mt-2 lg:mt-5 slide-in-item transition-transform animate-bounce"
+            <button
+              onClick={handleSwapClick}
+              className="bg-white text-maroon border-4 border-maroon text-2xl lg:text-[30px] 2xl:text-[38px] leading-[1.25] py-3 px-8 rotate-[3.02deg] uppercase mt-2 lg:mt-5 slide-in-item hover:scale-105 transition-transform animate-bounce"
             >
-              Buy $father here
-            </a>
+              {walletAddress ? 'Swap $father' : 'Connect Wallet To Swap'}
+            </button>
           </div>
         </div>
       </div>
+
+      <SwapModal
+        isOpen={isSwapModalOpen}
+        onClose={() => setIsSwapModalOpen(false)}
+      />
     </div>
   );
 };

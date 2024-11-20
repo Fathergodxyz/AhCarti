@@ -15,7 +15,21 @@
   background-image: linear-gradient(to bottom, #cea97b, #9e7039);
   background-clip: text;
   color: transparent;
+<<<<<<< HEAD
 }
+=======
+  text-shadow: 1px 1px 2px
+}
+
+.border-accent {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-width: 4px;
+  border-color: #8B7355;
+}
+
+>>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
 /* 
 .container {
   display: flex;
@@ -48,7 +62,11 @@
   height: 85px;
 }
 
+<<<<<<< HEAD
 #blessing-info-icon {
+=======
+.blessing-info-icon {
+>>>>>>> ddf59e5 (swap feature added, cleaned up bounty hunter app)
   position: absolute;
   z-index: 3;
   right: 140px;
