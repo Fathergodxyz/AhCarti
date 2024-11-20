@@ -10,7 +10,7 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "start": "vite preview --host"
+    "start": "vite preview --host --port ${PORT:-3000}"
   },
   "dependencies": {
     "@fireworks-js/react": "^2.10.8",
