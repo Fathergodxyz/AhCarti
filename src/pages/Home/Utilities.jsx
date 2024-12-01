@@ -72,19 +72,19 @@ const Utilities = () => {
                 <img 
                   src="/Advisory.svg" 
                   alt="Advisory" 
-                  className="absolute bottom-4 right-4 w-48 sm:w-60 md:w-72 lg:w-80 h-auto z-10"
+                  className="absolute bottom-4 right-4 w-16 sm:w-60 md:w-72 lg:w-80 h-auto z-10"
                 />
               </a>
             </div>
             
             <div className="w-full max-w-[95vw] xl:max-w-[1400px] mx-auto mt-16 slide-in-item">
-              <div className="flex justify-between items-end mb-2">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-2">
                 <div>
-                  <h1 className="text-7xl md:text-8xl font-bold text-black font-['Raleway']">MrOwl</h1>
-                  <h2 className="text-4xl md:text-5xl text-black mt-2 font-['Raleway']">Memecoin lit</h2>
+                  <h1 className="text-4xl sm:text-7xl md:text-8xl font-bold text-black font-['Raleway']">MrOwl</h1>
+                  <h2 className="text-2xl sm:text-4xl md:text-5xl text-black mt-2 font-['Raleway']">Memecoin lit</h2>
                 </div>
-                <div className="mb-2">
-                  <p className="text-2xl md:text-3xl text-gray-600 font-['Raleway']">shitcoin • token • pump fun</p>
+                <div className="mt-2 sm:mb-2">
+                  <p className="text-lg sm:text-2xl md:text-3xl text-gray-600 font-['Raleway']">shitcoin • token • pump fun</p>
                 </div>
               </div>
               <Divider />

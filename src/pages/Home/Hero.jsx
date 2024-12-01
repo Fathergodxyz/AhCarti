@@ -92,7 +92,7 @@ const Hero = () => {
 
       <div className="absolute bottom-5 lg:bottom-8 left-5 lg:left-8 flex gap-3 lg:gap-4">
         <a
-          href="https://t.me/FatherGodSol"
+          href="https://t.me/CTO_Carti"
           target="_blank"
           className="hero-social hover:![scale:1.05] transition-[scale] duration-200"
         >
@@ -100,7 +100,7 @@ const Hero = () => {
         </a>
 
         <a
-          href="https://x.com/realfatheronsol"
+          href="https://x.com/AhCarti"
           target="_blank"
           className="hero-social hover:![scale:1.05] transition-[scale] duration-200"
         >

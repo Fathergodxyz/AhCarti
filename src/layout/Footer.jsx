@@ -81,7 +81,7 @@ const Footer = () => {
 
   <div className="flex gap-4 mt-8 md:mt-10 mb-16 md:mb-20 lg:mb-24 xl:mb-28 slide-in-item">
     <a
-      href="https://t.me/FatherGodSol"
+      href="https://x.com/AhCarti"
       target="_blank"
       rel="noopener noreferrer"
       className="hover:![scale:1.05] transition-[scale] duration-200"
@@ -94,7 +94,7 @@ const Footer = () => {
     </a>
 
     <a
-      href="https://t.me/FatherGodSol"
+      href="https://t.me/CTO_Carti"
       target="_blank"
       className="hero-social hover:![scale:1.05] transition-[scale] duration-200"
     >

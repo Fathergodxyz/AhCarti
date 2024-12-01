@@ -42,9 +42,9 @@ const Header = ({ isGoalReached, onHuntClick, notFixed }) => {
       `}
     >
       <div className={`
-        flex justify-between items-center w-full px-4 md:px-6
+        flex justify-between items-center w-full px-3 md:px-4
         transition-all duration-300
-        ${isScrolled || isGoalReached ? 'py-2' : 'py-4'}
+        ${isScrolled || isGoalReached ? 'py-1' : 'py-2'}
       `}>
         <div 
           onClick={() => navigate("/")}
@@ -54,19 +54,19 @@ const Header = ({ isGoalReached, onHuntClick, notFixed }) => {
             src="/carti.svg"
             alt="CARTI"
             className={`
-              h-10 xs:h-12 sm:h-16 md:h-20 lg:h-24
+              h-8 xs:h-10 sm:h-12 md:h-14 lg:h-16
               transition-all duration-300
-              ${isScrolled || isGoalReached ? 'scale-75' : 'scale-100'}
+              ${isScrolled || isGoalReached ? 'scale-90' : 'scale-100'}
             `}
           />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {!isGoalReached && (
             <div className={`
               transition-all duration-300 transform
-              ${isScrolled ? 'scale-[0.9]' : 'scale-100'}
-              flex items-center gap-4
+              ${isScrolled ? 'scale-95' : 'scale-100'}
+              flex items-center gap-3
             `}>
               <a
                 href="https://pump.fun/coin/826HvBBEEVSATLAY2Uu2FLqbXZoujkW34wP8gL6Jpump"
@@ -76,9 +76,9 @@ const Header = ({ isGoalReached, onHuntClick, notFixed }) => {
                   bg-[#1a1a1a] text-[#e4e8e0] border border-[#e4e8e0] cursor-pointer 
                   inline-block transform hover:scale-105 
                   transition-all duration-200 ease-in-out
-                  whitespace-nowrap text-base xs:text-lg sm:text-xl
-                  py-1.5 xs:py-2 md:py-2.5
-                  px-3 xs:px-4 md:px-6
+                  whitespace-nowrap text-sm xs:text-base sm:text-lg
+                  py-1 xs:py-1.5 md:py-2
+                  px-2.5 xs:px-3 md:px-4
                   rounded-md
                   hover:bg-[#2a2a2a]
                   shadow-md

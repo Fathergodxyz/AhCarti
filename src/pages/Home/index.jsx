@@ -16,7 +16,7 @@ const Home = () => {
         Carti-Ahh! by mrowl
       </div>
     </Marquee>
-  ;
+
 
       <Utilities />
       <HowToBuy />
