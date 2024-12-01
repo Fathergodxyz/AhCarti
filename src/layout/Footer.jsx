@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import Telegram from "../components/svg/Telegram";
-import Twitter from "../components/svg/Twitter";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Twitter2 from "../components/svg/Twitter";
 
 const Footer = () => {
   const wrapper = useRef();
@@ -61,50 +61,67 @@ const Footer = () => {
            C1200,20 1260,50 1320,50
            C1380,50 1410,20 1440,20
            L1440,0 L0,0 Z"
-            fill="#000000"
+            fill="#e4e4dc"
           />
         </svg>
       </div>
 
       <div
-        ref={wrapper}
-        className="bg-[url(/socials-bg.png)] bg-no-repeat bg-cover bg-center flex flex-col justify-end items-center pt-14 xs:pt-20 lg:pt-24"
-      >
-        <div className="text-center">
-          <h2 className="uppercase text-[72px] md:text-[84px] lg:text-[100px] xl:text-[120px] 2xl:text-[181px] text-maroon !leading-[1.1] slide-in-item">
-            SOCIALS
-          </h2>
+  ref={wrapper}
+  className="bg-black flex flex-col justify-end items-center pt-14 xs:pt-20 lg:pt-24 pb-8 sm:pb-12 md:pb-16 lg:pb-20"
+>
+  <div className="text-center">
+    <h2 className="uppercase text-[72px] md:text-[84px] lg:text-[100px] xl:text-[120px] 2xl:text-[181px] text-white !leading-[1.1] slide-in-item">
+      SOCIALS
+    </h2>
 
-          <p className="font-madimi text-2xl md:text-[28px] lg:text-[32px] xl:text-[36px] 2xl:text-[50px] text-maroon max-w-[18.1em] !leading-[1.25] mt-1 slide-in-item">
-            Join The $father
-          </p>
-        </div>
+    <p className="font-madimi text-2xl md:text-[28px] lg:text-[32px] xl:text-[36px] 2xl:text-[50px] text-white max-w-[18.1em] !leading-[1.25] mt-1 slide-in-item">
+    </p>
+  </div>
 
-        <div className="flex gap-4 mt-8 md:mt-10 slide-in-item">
-          <a
-            href="https://t.me/FatherGodSol"
-            target="_blank"
-            className="hover:![scale:1.05] transition-[scale] duration-200"
-          >
-            <Telegram className="size-[60px] md:size-[72px] xl:size-[90px] 2xl:size-[119px] text-white" />
-          </a>
+  <div className="flex gap-4 mt-8 md:mt-10 mb-16 md:mb-20 lg:mb-24 xl:mb-28 slide-in-item">
+    <a
+      href="https://t.me/FatherGodSol"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:![scale:1.05] transition-[scale] duration-200"
+    >
+      <img 
+        src="/twitter2.svg" 
+        alt="Telegram"
+        className="text-pale-gold size-[50px] lg:size-[67px]"
+      />
+    </a>
 
-          <a
-            href="https://x.com/realfatheronsol"
-            target="_blank"
-            className="hover:![scale:1.05] transition-[scale] duration-200"
-          >
-            <Twitter className="size-[60px] md:size-[72px] xl:size-[90px] 2xl:size-[119px] text-white" />
-          </a>
-        </div>
+    <a
+      href="https://t.me/FatherGodSol"
+      target="_blank"
+      className="hero-social hover:![scale:1.05] transition-[scale] duration-200"
+    >
+      <img 
+        src="/telegram2.svg" 
+        alt="Telegram"
+        className="text-pale-gold size-[50px] lg:size-[67px]"
+      />
+    </a>
+  </div>
 
-        <img
-          ref={image}
-          src="/socials-father.png"
-          alt="father"
-          className="w-full max-w-[450px] xl:max-w-[500px] 2xl:max-w-[608px] origin-bottom"
-        />
-      </div>
+  <div className="w-full flex justify-center">
+    <a
+      href="https://dexscreener.com/solana/8j9y2cgcicqryz9wcp387ye1rybojvxrqfuudnpfjy13"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="transform transition-transform duration-300 hover:scale-105"
+    >
+      <img
+        ref={image}
+        src="/morty.png"
+        alt="father"
+        className="w-full max-w-[450px] xl:max-w-[500px] 2xl:max-w-[608px] origin-bottom border-4 border-white"
+      />
+    </a>
+  </div>
+</div>
     </div>
   );
 };

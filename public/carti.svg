@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
+  <!-- Background -->
+  
+  
+  <!-- Main text with distressed effect -->
+  <text x="40" y="80" 
+        fill="black"
+        style="font-size: 80px; font-weight: 900; font-family: Arial Black, Arial, sans-serif; letter-spacing: -2px;">
+    CARTI
+  </text>
+  
+  <!-- Secondary text -->
+  <text x="40" y="160" 
+        fill="black"
+        style="font-size: 90px; font-weight: 900; font-family: Arial Black, Arial, sans-serif; letter-spacing: 2px;">
+    AHHH
+  </text>
+  
+  <!-- Small credit text -->
+  <text x="380" y="170"
+        fill="black"
+        style="font-size: 20px; font-family: Arial, sans-serif;">
+    by mrowl
+  </text>
+  
+  <!-- Decorative elements -->
+  <rect x="40" y="95" width="420" height="5" fill="black"/>
+  
+  <!-- Glitch effect rectangles -->
+  <rect x="380" y="30" width="40" height="8" fill="black"/>
+  <rect x="350" y="45" width="30" height="5" fill="black"/>
+</svg>

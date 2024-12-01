@@ -1,13 +1,15 @@
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import Telegram from "../../components/svg/Telegram";
 import Twitter from "../../components/svg/Twitter";
-import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const logo = useRef();
   const button = useRef();
   const heading = useRef();
+  const byline = useRef();
+  const squares = useRef();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const Hero = () => {
     );
 
     tl.fromTo(
-      [heading.current, button.current, socials],
+      [heading.current, byline.current, squares.current, button.current, socials],
       { yPercent: 40, opacity: 0 },
       { yPercent: 0, opacity: 1, stagger: 0.2 },
       "-=0.2"
@@ -30,43 +32,62 @@ const Hero = () => {
 
   return (
     <div 
-  className="h-screen min-h-[800px] relative flex justify-center items-center pt-[1vw] px-[5vw]"
-  style={{
-    backgroundColor: '',
-    backgroundImage: 'url(/rays.svg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  }}
->
-      <div className="relative w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[420px] 2xl:max-w-[482px]">
-        <img
-          ref={logo}
-          src="/logo-big.png"
-          alt="$father"
-          width={482}
-          height={497}
-          className="w-full"
-        />
+      className="h-screen min-h-[800px] relative flex justify-center items-center pt-[1vw] px-[5vw]"
+      style={{
+        backgroundColor: '',
+        backgroundImage: 'url(/rays.svg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      <div className="relative w-full max-w-[437px] sm:max-w-[478px] lg:max-w-[550px] 2xl:max-w-[600px]">
+        <div className="relative rounded-full overflow-hidden">
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(74, 74, 74, 0.5) 0%, rgba(26, 26, 26, 0.3) 100%)',
+              backdropFilter: 'blur(5px)',
+            }}
+          />
+          
+          <img
+            ref={logo}
+            src="/Carti-ahh.webp"
+            alt="$father"
+            width={550}
+            height={555}
+            className="w-[95%] mx-auto relative mt-1"
+          />
+        </div>
 
-        <h1
-          ref={heading}
-          className="absolute text-white font-madimi text-[min(25px,6.66vw)] xs:text-[25px] sm:text-[28px] lg:text-[30px] 2xl:text-[35px] uppercase right-[2.5%] bottom-[-2%] text-stroke-black"
-        >
-          The father of Solana
-        </h1>
-
-        <a
-          ref={button}
-          onClick={(e) => {
-            e.preventDefault();
-            navigate("/bounty-hunter");
-          }}
-          target="_blank"
-          className="bg-maroon text-pale-gold border-4 border-pale-gold text-2xl lg:text-[30px] 2xl:text-[38px] leading-[1.25] py-2.5 lg:py-3 px-6 lg:px-8 absolute rotate-[3.02deg] left-[2%] xs:left-[6%] bottom-[-28%] xs:bottom-[-25%] hover:![scale:1.03] transition-[scale] duration-200"
-        >
-          BOUNTY HUNTER
-        </a>
+        <div className="absolute -right-4 -bottom-8 flex flex-col items-end">
+          <h1
+            ref={heading}
+            className="text-white font-madimi text-[min(25px,6.66vw)] xs:text-[25px] sm:text-[28px] lg:text-[30px] 2xl:text-[35px] uppercase text-stroke-black z-10 drop-shadow-lg"
+          >
+            Carti-aHHHHHH!
+          </h1>
+          <div className="flex flex-col items-end gap-1">
+            <p
+              ref={byline}
+              className="text-white font-madimi text-[min(16px,4vw)] xs:text-[16px] sm:text-[18px] lg:text-[20px] 2xl:text-[22px] text-stroke-black z-10 drop-shadow-lg"
+            >
+              by mrowl
+            </p>
+            <svg 
+              ref={squares}
+              viewBox="0 0 200 50" 
+              className="w-24 h-6 mt-1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="10" y="10" width="30" height="30" fill="#000000"/>
+              <rect x="50" y="10" width="30" height="30" fill="#808080"/>
+              <rect x="90" y="10" width="30" height="30" fill="#C0C0C0"/>
+              <rect x="130" y="10" width="30" height="30" fill="#FFFFFF"/>
+            </svg>
+          </div>
+        </div>
       </div>
 
       <div className="absolute bottom-5 lg:bottom-8 left-5 lg:left-8 flex gap-3 lg:gap-4">
