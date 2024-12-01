@@ -45,7 +45,7 @@ const Utilities = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 100"
           preserveAspectRatio="none"
-          className="relative block w-full h-[60px] sm:h-[80px] md:h-[100px]"
+          className="relative block w-full h-[40px] sm:h-[80px] md:h-[100px]"
         >
           <path
             d="M0,20 C60,20 120,40 180,40 C240,40 300,20 360,20 C420,20 480,50 540,50 C600,50 660,20 720,20 C780,20 840,35 900,35 C960,35 1020,20 1080,20 C1140,20 1200,45 1260,45 C1320,45 1380,20 1440,20 L1440,0 L0,0 Z"
@@ -56,7 +56,7 @@ const Utilities = () => {
 
       <div className="relative">
         <div ref={wrapper} className="bg-[#e4e6e0] section-wrapper">
-          <div className="flex flex-col items-center justify-center min-h-screen w-full px-4">
+          <div className="flex flex-col items-center justify-center min-h-[80vh] sm:min-h-screen w-full px-4">
             <div className="w-full max-w-[95vw] xl:max-w-[1400px] mx-auto slide-in-item">
               <a 
                 href="https://dexscreener.com/solana/93tjgwff5ac5thymi8c4wejvvqq4tumemuyw1leyz7bu"
@@ -77,7 +77,7 @@ const Utilities = () => {
               </a>
             </div>
             
-            <div className="w-full max-w-[95vw] xl:max-w-[1400px] mx-auto mt-16 slide-in-item">
+            <div className="w-full max-w-[95vw] xl:max-w-[1400px] mx-auto mt-8 sm:mt-16 slide-in-item">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-2">
                 <div>
                   <h1 className="text-4xl sm:text-7xl md:text-8xl font-bold text-black font-['Raleway']">MrOwl</h1>
@@ -98,7 +98,7 @@ const Utilities = () => {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 100"
             preserveAspectRatio="none"
-            className="relative block w-full h-[60px] sm:h-[80px] md:h-[100px]"
+            className="relative block w-full h-[40px] sm:h-[80px] md:h-[100px]"
           >
             <path
               d="M0,70 C120,70 180,40 240,40 C300,40 360,70 420,70 C480,70 540,30 600,30 C660,30 720,70 780,70 C840,70 900,50 960,50 C1020,50 1080,70 1140,70 C1200,70 1260,40 1320,40 C1380,40 1410,70 1440,70 L1440,100 L0,100 Z"

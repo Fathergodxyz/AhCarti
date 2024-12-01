@@ -65,14 +65,16 @@ const HowToBuy = () => {
   );
 
   return (
-    <div ref={wrapper} className="section-wrapper bg-[#e4e6e0] min-h-screen py-16">
+    <div ref={wrapper} className="section-wrapper bg-[#e4e6e0] min-h-screen py-8 sm:py-16">
       <div className="w-[90%] sm:w-[93%] max-w-[1440px] mx-auto relative min-h-screen flex flex-col">
-        <div className="flex justify-between">
-          <div className="flex gap-24 md:gap-32">
+        {/* Main content wrapper */}
+        <div className="flex flex-col sm:flex-row sm:justify-between">
+          {/* Columns wrapper */}
+          <div className="grid grid-cols-3 gap-4 sm:flex sm:gap-24 md:gap-32 mb-8 sm:mb-0">
             {columnsData.map((column, columnIndex) => (
               <div 
                 key={columnIndex} 
-                className="font-madimi text-xl sm:text-2xl md:text-[28px] !leading-[1.3] slide-in-item"
+                className="font-madimi text-base sm:text-2xl md:text-[28px] !leading-[1.3] slide-in-item"
               >
                 {column.map((item, itemIndex) => (
                   <div key={itemIndex}>
@@ -91,17 +93,17 @@ const HowToBuy = () => {
           </div>
 
           {/* Signature */}
-          <div className="slide-in-item">
+          <div className="slide-in-item order-last sm:order-none mt-8 sm:mt-0">
             <img 
               src="/signature.png" 
               alt="mrowl signature" 
-              className="w-[600px] md:w-[700px] xl:w-[800px] object-contain"
+              className="w-full sm:w-[600px] md:w-[700px] xl:w-[800px] object-contain"
             />
           </div>
         </div>
 
         {/* Bottom Text */}
-        <div className="w-full flex justify-between mt-auto mb-40 font-madimi text-lg md:text-xl">
+        <div className="w-full flex justify-between mt-8 sm:mt-auto mb-8 sm:mb-20 font-madimi text-base sm:text-lg md:text-xl">
           <div className="slide-in-item">
             <div>{currentDate}</div>
             <div>{totalCoins} coins</div>
