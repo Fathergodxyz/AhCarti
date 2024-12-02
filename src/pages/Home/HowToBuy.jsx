@@ -1,11 +1,20 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Check, Copy } from 'lucide-react';
 
 const HowToBuy = () => {
   const wrapper = useRef();
   const totalCoins = 24;
   const currentDate = "December 1, 2024";
+  const [copied, setCopied] = useState(false);
+  const contractAddress = "826HvBBEEVSATLAY2Uu2FLqbXZoujkW34wP8gL6Jpump";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(contractAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const columnsData = [
     // First Column
@@ -42,6 +51,7 @@ const HowToBuy = () => {
     ],
   ];
 
+
   useGSAP(
     () => {
       const items = wrapper.current.querySelectorAll(".slide-in-item");
@@ -66,8 +76,8 @@ const HowToBuy = () => {
 
   return (
     <div ref={wrapper} className="section-wrapper bg-[#e4e6e0] min-h-screen py-8 sm:py-16">
-      <div className="w-[90%] sm:w-[93%] max-w-[1440px] mx-auto relative min-h-screen flex flex-col">
-        {/* Main content wrapper */}
+      <div className="w-[90%] sm:w-[93%] max-w-[1440px] mx-auto relative min-h-screen flex flex-col justify-between">
+        {/* Top Section */}
         <div className="flex flex-col sm:flex-row sm:justify-between">
           {/* Columns wrapper */}
           <div className="grid grid-cols-3 gap-4 sm:flex sm:gap-24 md:gap-32 mb-8 sm:mb-0">
@@ -102,8 +112,30 @@ const HowToBuy = () => {
           </div>
         </div>
 
+        {/* Contract Address Box - Centered */}
+        <div className="w-full sm:w-2/3 mx-auto -mb-20 sm:-mb-32 slide-in-item">
+          <div 
+            onClick={handleCopy}
+            className="border-4 border-black p-4 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors relative group"
+          >
+            <div className="flex justify-between items-center">
+              <div>
+                <p className="text-lg font-bold mb-1">CA:</p>
+                <p className="text-xl sm:text-2xl font-bold font-mono break-all">{contractAddress}</p>
+              </div>
+              <div className="text-gray-500 ml-4">
+                {copied ? (
+                  <Check className="w-6 h-6" />
+                ) : (
+                  <Copy className="w-6 h-6 opacity-50 group-hover:opacity-100" />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Text */}
-        <div className="w-full flex justify-between mt-8 sm:mt-auto mb-8 sm:mb-20 font-madimi text-base sm:text-lg md:text-xl">
+        <div className="w-full flex justify-between mb-8 sm:mb-20 font-madimi text-base sm:text-lg md:text-xl">
           <div className="slide-in-item">
             <div>{currentDate}</div>
             <div>{totalCoins} coins</div>
@@ -128,3 +160,5 @@ const HowToBuy = () => {
 };
 
 export default HowToBuy;
+  
+ 
